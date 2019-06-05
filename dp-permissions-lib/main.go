@@ -28,7 +28,7 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/datasets/{dataset_id}", auth.Require(permissions.CRUD{Create: true, Read: true, Update: true}, apiEndpoint))
+	r.HandleFunc("/datasets/{dataset_id}", auth.Require(permissions.CRUD{Read: true}, apiEndpoint))
 
 	log.Event(nil, "starting example service")
 	if err := http.ListenAndServe(":8090", r); err != nil {
